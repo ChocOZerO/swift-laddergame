@@ -9,46 +9,56 @@
 import Foundation
 
 struct LadderGame {
-    
-    private let height : Int
-    private(set) var names : [LadderPlayer]
-    private(set) var ladder : Array<Array<String>>
-    
+    private let height: Int
+    private(set) var names: [LadderPlayer]
+    private(set) var ladder: [[String]]
+
     // 사다리 구성 요소
-    private enum LadderPrint : String {
-        case bar = "|"
-        case step = "-----"
-        case empty = "     "
+    private enum LadderPrint {
+        case bar
+        case step
+        case empty
+        var value: String {
+            switch self {
+            case .bar: return "|"
+            case .step: return "-----"
+            case .empty: return "     "
+            }
+        }
     }
-    
     // Initializer
     init(height: Int, names: [LadderPlayer]) {
         self.height = height
         self.names = names
         self.ladder = []
     }
-    
     // 사다리 틀 만들기
     mutating func makeLadderLayer() {
-        for i in 0..<self.height {
-            self.ladder.append(Array<String>())
-            setLadderLine(lineNum: i)
-            self.ladder[i].append(LadderPrint.bar.rawValue)
+        for index in 0..<height {
+            ladder.append([String]())
+            setLadderLine(lineNum: index)
+            ladder[index].append(LadderPrint.bar.value)
         }
     }
     // 사다리 각 라인 만들기
     mutating private func setLadderLine(lineNum: Int) {
         for _ in 1..<self.names.count {
-            self.ladder[lineNum].append(LadderPrint.bar.rawValue)
-            setStep(lineNum: lineNum)
+            self.ladder[lineNum].append(LadderPrint.bar.value)
+            setStep(lineNum: lineNum, isStep: isStep())
         }
     }
     // 발판 유무
-    mutating private func setStep(lineNum: Int) {
-        guard Int(arc4random_uniform(2)) > 0 else {
-            self.ladder[lineNum].append(LadderPrint.empty.rawValue)
-            return
+    mutating private func setStep(lineNum: Int, isStep: Bool) {
+        if isStep {
+            self.ladder[lineNum].append(LadderPrint.step.value)
+        } else {
+            self.ladder[lineNum].append(LadderPrint.empty.value)
         }
-        self.ladder[lineNum].append(LadderPrint.step.rawValue)
+
     }
+
+    private func isStep() -> Bool {
+        return Int(arc4random_uniform(2)) > 0
+    }
+
 }

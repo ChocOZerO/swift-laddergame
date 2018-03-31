@@ -14,9 +14,10 @@ typealias LadderGameSetter = (playerNames: [LadderPlayer], ladderHeight: Int)
 // 사다리 게임 세팅
 func setLadderGame() -> LadderGame {
     // 새로운 사다리 게임을 위해 입력값 받기
-    let ladderGameSetter : LadderGameSetter = InputView.setNewGame()
+    let ladderGameSetter = InputView.setNewGame()
     // 사다리 게임 인스턴스 생성
-    var ladderGame : LadderGame = LadderGame(height: ladderGameSetter.ladderHeight, names: ladderGameSetter.playerNames)
+    var ladderGame = LadderGame(height: ladderGameSetter.ladderHeight,
+                                names: ladderGameSetter.playerNames)
     // 입력된 값을 이용해 사다리게임 만들기
     ladderGame.makeLadderLayer()
     return ladderGame
