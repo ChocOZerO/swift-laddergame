@@ -11,31 +11,27 @@ import XCTest
 @testable import LadderGame
 
 class UnitTestLadderGame: XCTestCase {
-    
     var ladderGame : LadderGame!
-    
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-        ladderGame = LadderGame.init(height: 6
-            , names: [LadderPlayer.init(name: "jake")
-                , LadderPlayer.init(name: "jk")
-                , LadderPlayer.init(name: "j")
-                , LadderPlayer.init(name: "honux")
-                , LadderPlayer.init(name: "pobi")
-            ])
-        
+        ladderGame = LadderGame.init(height: 6,
+                                     names: [LadderPlayer.init(name: "jake"),
+                                             LadderPlayer.init(name: "jk"),
+                                             LadderPlayer.init(name: "j"),
+                                             LadderPlayer.init(name: "honux"),
+                                             LadderPlayer.init(name: "pobi")])
     }
-    
+
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
-    
+
     func testLadderLayer() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
         XCTAssertEqual(ladderGame.names[0].name, "jake")
+        XCTAssertEqual(ladderGame.names[1].name, "jk")
+        XCTAssertEqual(ladderGame.names[2].name, "j")
+        XCTAssertEqual(ladderGame.names[3].name, "honux")
+        XCTAssertEqual(ladderGame.names[4].name, "pobi")
     }
     
 }

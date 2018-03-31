@@ -11,14 +11,13 @@ import Foundation
 struct ResultView {
     // 사다리 출력
     static func printResult(result: LadderGame) {
-        for i in 0..<result.ladder.count {
-            printLadderLineResult(lineResult: result.ladder[i])
+        for index in result.ladder.indices {
+            printLadderLineResult(lineResult: result.ladder[index])
         }
         printPlayers(players: result.names)
     }
-    
     // 사다리 각 라인출력
-    static private func printLadderLineResult(lineResult: Array<String>) {
+    static private func printLadderLineResult(lineResult: [String]) {
         let playerCount : Int = lineResult.count
         print("  ", terminator: "")
         for j in 0..<(playerCount-1) {
@@ -27,7 +26,7 @@ struct ResultView {
         print(lineResult[playerCount-1])
     }
     // player 출력
-    static private func printPlayers(players: Array<LadderPlayer>) {
+    static private func printPlayers(players: [LadderPlayer]) {
         for player in players {
             print(player.name, terminator:" ")
         }
