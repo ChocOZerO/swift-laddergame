@@ -11,7 +11,7 @@ import Foundation
 struct InputView {
     
     // New Game
-    static func setNewGame() -> LadderGameSetter {
+    static func getGameInformation() -> LadderGameInformation {
         var playerNames = [LadderPlayer]()
         var ladderHeight = 0
         repeat {
@@ -43,7 +43,7 @@ struct InputView {
     
     // 이름 입력값 5글자 이상 체크
     static private func checkNameLength(playerNames: [String]) -> Bool {
-        for name in playerNames where name.isEmpty || name.count > 5 {
+        for name in playerNames where name.isEmpty || name.unicodeScalars.count > 5 {
             print("이름길이는 영어 1자리 부터 5자리 까지 가능 합니다.")
             return false
         }
