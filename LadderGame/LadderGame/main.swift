@@ -9,20 +9,20 @@
 import Foundation
 
 // 사다리게임을 위한 세팅타입 정의
-typealias LadderGameSetter = (playerNames: [LadderPlayer], ladderHeight: Int)
+typealias LadderGameInformation = (playerNames: [LadderPlayer], ladderHeight: Int)
 
 // 사다리 게임 세팅
 func setLadderGame() -> LadderGame {
     // 새로운 사다리 게임을 위해 입력값 받기
-    let ladderGameSetter = InputView.setNewGame()
+    let ladderGameInformation = InputView.getGameInformation()
     // 사다리 게임 인스턴스 생성
-    var ladderGame = LadderGame(height: ladderGameSetter.ladderHeight,
-                                names: ladderGameSetter.playerNames)
+    var ladderGame = LadderGame(height: ladderGameInformation.ladderHeight,
+                                names: ladderGameInformation.playerNames)
     // 입력된 값을 이용해 사다리게임 만들기
     ladderGame.makeLadderLayer()
     return ladderGame
 }
 
 let ladderGame = setLadderGame()
-ResultView.printResult(result: ladderGame)
+ResultView.printResult(of: ladderGame)
 

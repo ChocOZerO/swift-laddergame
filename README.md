@@ -38,6 +38,10 @@
 - 테스트 코드를 추가한다.
 
 ---
+## Sequence Diagram
+![sequence diagram](materials/sequence-diagram.png)
+
+---
 ## 중간에 고생했던 부분 / 기억할 부분 간단 정리
 - arc4random_uniform()를 이용하여 랜덤값 다룰 수 있음
 - split(separator: ",")를 이용하면 문자열에서 쉼표(,)를 기준으로 분리가 가능하다
