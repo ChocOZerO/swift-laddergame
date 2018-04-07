@@ -10,7 +10,7 @@ import Foundation
 
 struct LadderGame {
     private let height: Int
-    private(set) var names: [LadderPlayer]
+    private(set) var players: [LadderPlayer]
     private(set) var ladder: [[String]]
 
     // 사다리 구성 요소
@@ -27,9 +27,9 @@ struct LadderGame {
         }
     }
     // Initializer
-    init(height: Int, names: [LadderPlayer]) {
+    init(height: Int, players: [LadderPlayer]) {
         self.height = height
-        self.names = names
+        self.players = players
         self.ladder = []
     }
     // 사다리 틀 만들기
@@ -42,19 +42,14 @@ struct LadderGame {
     }
     // 사다리 각 라인 만들기
     mutating private func setLadderLine(lineNum: Int) {
-        for _ in 1..<self.names.count {
+        for _ in 1..<players.count {
             self.ladder[lineNum].append(LadderPrint.bar.value)
             setStep(lineNum: lineNum, isStep: isStep())
         }
     }
     // 발판 유무
     mutating private func setStep(lineNum: Int, isStep: Bool) {
-        if isStep {
-            self.ladder[lineNum].append(LadderPrint.step.value)
-        } else {
-            self.ladder[lineNum].append(LadderPrint.empty.value)
-        }
-
+        isStep ? ladder[lineNum].append(LadderPrint.step.value) : ladder[lineNum].append(LadderPrint.empty.value)
     }
 
     private func isStep() -> Bool {
