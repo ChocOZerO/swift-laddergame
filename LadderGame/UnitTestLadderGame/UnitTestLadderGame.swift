@@ -15,7 +15,7 @@ class UnitTestLadderGame: XCTestCase {
     override func setUp() {
         super.setUp()
         ladderGame = LadderGame.init(height: 6,
-                                     names: [LadderPlayer.init(name: "jake"),
+                                     players: [LadderPlayer.init(name: "jake"),
                                              LadderPlayer.init(name: "jk"),
                                              LadderPlayer.init(name: "j"),
                                              LadderPlayer.init(name: "honux"),
@@ -27,13 +27,14 @@ class UnitTestLadderGame: XCTestCase {
     }
 
     func testLadderLayer() {
-        XCTAssertEqual(ladderGame.names[0].name, "jake")
-        XCTAssertEqual(ladderGame.names[1].name, "jk")
-        XCTAssertEqual(ladderGame.names[2].name, "j")
-        XCTAssertEqual(ladderGame.names[3].name, "honux")
-        XCTAssertEqual(ladderGame.names[4].name, "pobi")
+        XCTAssertEqual(ladderGame.players[0].name, "jake")
+        XCTAssertEqual(ladderGame.players[1].name, "jk")
+        XCTAssertEqual(ladderGame.players[2].name, "j")
+        XCTAssertEqual(ladderGame.players[3].name, "honux")
+        XCTAssertEqual(ladderGame.players[4].name, "pobi")
     }
 
+    // TDD Study
     func test_사람수가_2명이상인지_13명_안에들어가는지_확인한다() {
     }
 

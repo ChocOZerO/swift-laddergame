@@ -14,7 +14,7 @@ struct ResultView {
         for index in game.ladder.indices {
             printLadderLineResult(lineResult: game.ladder[index])
         }
-        printPlayers(players: game.names)
+        printPlayers(players: game.players)
     }
     // 사다리 각 라인출력
     static private func printLadderLineResult(lineResult: [String]) {
