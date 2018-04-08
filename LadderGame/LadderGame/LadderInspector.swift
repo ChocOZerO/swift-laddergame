@@ -17,8 +17,7 @@ struct LadderInspector {
     }
     private func validate(playerNames: [String]) -> Bool {
         guard playerNames.count > 1 else { return false }
-        for player in playerNames where !validate(playerName: player) { return false }
-        return true
+        return !playerNames.contains(where: { return !validate(playerName: $0) })
     }
     private func validate(playerName: String) -> Bool {
         return !(playerName.isEmpty || playerName.unicodeScalars.count > 5)

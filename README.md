@@ -46,3 +46,11 @@
 - arc4random_uniform()를 이용하여 랜덤값 다룰 수 있음
 - split(separator: ",")를 이용하면 문자열에서 쉼표(,)를 기준으로 분리가 가능하다
 - 애플 테스트 가이드 문서
+- JavaScript의 some과 every Swift로 구현하기
+```
+// check if EVERY playerNames are validate
+!playerNames.contains(where: { return !validate(playerName: $0) })
+
+// check if SOME playerNames are not validate
+playerNames.contains(where: { return !validate(playerName: $0) })
+```
